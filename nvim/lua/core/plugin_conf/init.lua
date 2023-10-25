@@ -1,0 +1,5 @@
+require('core.plugin_conf.lualine')
+require('core.plugin_conf.lsp')
+require('core.plugin_conf.telescope')
+require('core.plugin_conf.colorscheme')
+require('core.plugin_conf.completion')
