@@ -4,21 +4,31 @@ lspconfig.clangd.setup{}
 lspconfig.rust_analyzer.setup {
     settings = {
         ['rust-analyzer'] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
             cargo = {
-                allFeatures = true,
+                buildScripts = {
+                    enable = true,
+                },
             },
-        },
-        checkOnSave = {
-            command = 'clippy',
-        },
-        inlayHints = { locationLinks = true },
-        diagnostics = {
-            enable = true,
-            experimental = {
+            checkOnSave = {
+                command = 'clippy',
+            },
+            procMacro = {
+                enable = true
+            },
+            diagnostics = {
                 enable = true,
+                experimental = {
+                    enable = true,
+                },
             },
         },
-    }  
+    }
 }
 lspconfig.gopls.setup {
     cmd = {'gopls'},
