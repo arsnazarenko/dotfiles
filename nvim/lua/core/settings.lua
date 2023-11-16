@@ -28,3 +28,5 @@ set.mouse = 'a'
 set.cursorline = true
 set.hidden = true
 
+set.undofile = true
+set.undodir = "/home/arsnaz/.vim/undodir"
