@@ -1,7 +1,9 @@
 vim.g.mapleader = ' '
 
+-- open vim explorer
 vim.keymap.set('n', '<leader>e', ":Ex<CR>")
 
+-- copy to out buffer
 vim.keymap.set('n', '<leader>y', "\"+y")
 vim.keymap.set('v', '<leader>y', "\"+y")
 vim.keymap.set('n', '<leader>Y', "\"+Y")
