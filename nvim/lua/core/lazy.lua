@@ -13,11 +13,12 @@ vim.opt.rtp:prepend(lazypath)
 
 
 local plugins = { 
-    'nvim-lualine/lualine.nvim', -- Lualine
-    
+    'nvim-lualine/lualine.nvim', -- Lualine 
+    "jiangmiao/auto-pairs", -- Auto brackets closer
     -- autocompletion 
-    'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP client
     
+    'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP clientkk
+
     'hrsh7th/nvim-cmp', -- Autocompletion plugin
     'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
     'hrsh7th/cmp-buffer', -- Snippets for current buffer
@@ -25,7 +26,6 @@ local plugins = {
     'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
     {"L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
     {'ellisonleao/gruvbox.nvim', priority = 1000 },
-    {'dracula/vim', priority = 1000 },
     {'nvim-telescope/telescope.nvim', tag = '0.1.2', dependencies = { 'nvim-lua/plenary.nvim' } },
 
 }
