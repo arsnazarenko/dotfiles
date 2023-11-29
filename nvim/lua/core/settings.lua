@@ -22,11 +22,9 @@ set.scrolloff = 8
 set.fileencoding = 'utf-8'
 set.termguicolors = true
 set.mouse = 'a'
--- set.signcolumn = 'yes'
+set.signcolumn = 'no'
 
 
 set.cursorline = true
 set.hidden = true
-
-set.undofile = true
-set.undodir = "/home/arsnaz/.vim/undodir"
+set.relativenumber = true

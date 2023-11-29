@@ -1,1 +1,1 @@
-vim.cmd [[ colorscheme torte ]]
+vim.cmd [[ colorscheme gruvbox ]]

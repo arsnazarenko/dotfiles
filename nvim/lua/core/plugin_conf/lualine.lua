@@ -1,8 +1,7 @@
 require('lualine').setup {
     options = {
-        icons_enabled = true,
-        theme = 'ayu_dark',
-        -- theme = 'dracula'
+        icons_enabled = false,
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
     },

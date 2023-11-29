@@ -11,8 +11,10 @@ vim.keymap.set('n', '<leader>Y', "\"+Y")
 -- Markown viewer in Firefox
 vim.api.nvim_create_user_command("Markdown", "!firefox %:p", {})
 
+arrow_disabled = function () print("Arrows disabled!") end
+
 -- Disable arrows in all modes
-vim.keymap.set({'n', 'i', 'v'}, '<up>', '<nop>')
-vim.keymap.set({'n', 'i', 'v'}, '<down>', '<nop>')
-vim.keymap.set({'n', 'i', 'v'}, '<left>', '<nop>')
-vim.keymap.set({'n', 'i', 'v'}, '<right>', '<nop>')
+vim.keymap.set({'n', 'i', 'v'}, '<up>', arrow_disabled)
+vim.keymap.set({'n', 'i', 'v'}, '<down>', arrow_disabled)
+vim.keymap.set({'n', 'i', 'v'}, '<left>', arrow_disabled)
+vim.keymap.set({'n', 'i', 'v'}, '<right>', arrow_disabled)

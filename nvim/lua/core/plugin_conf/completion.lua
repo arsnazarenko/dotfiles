@@ -12,8 +12,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-
-
 -- luasnip setup
 local luasnip = require 'luasnip'
 
@@ -34,24 +32,6 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-  -- ['<Tab>'] = cmp.mapping(function(fallback)
-  --   if cmp.visible() then
-  --     cmp.select_next_item()
-  --   elseif luasnip.expand_or_jumpable() then
-  --     luasnip.expand_or_jump()
-  --   else
-  --     fallback()
-  --   end
-  -- end, { 'i', 's' }),
-  -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-  --   if cmp.visible() then
-  --     cmp.select_prev_item()
-  --   elseif luasnip.jumpable(-1) then
-  --     luasnip.jump(-1)
-  --   else
-  --     fallback()
-  --   end
-  -- end, { 'i', 's' }),
   }),
   sources = {
     {name = 'path'},
@@ -69,7 +49,7 @@ vim.diagnostic.config({
   virtual_text = true,
   signs = true,
   update_in_insert = true,
-  underline = true,
+  underline = false,
   severity_sort = false,
   float = {
     focusable = false,
@@ -80,4 +60,5 @@ vim.diagnostic.config({
   },
 })
 
+-- Snippets
 require("luasnip.loaders.from_vscode").load({ include = { "c", "markdown", "rust", "go" }})

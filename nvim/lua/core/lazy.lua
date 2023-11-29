@@ -14,9 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = { 
     'nvim-lualine/lualine.nvim', -- Lualine 
-    "jiangmiao/auto-pairs", -- Auto brackets closer
-    -- autocompletion 
-    
     'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP clientkk
 
     'hrsh7th/nvim-cmp', -- Autocompletion plugin
