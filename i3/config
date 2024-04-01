@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-# font pango:monospace 9
+# font pango:monospace, 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -28,7 +28,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i  ~/Pictures/Wallpapers/debian12_1920x1080.png --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i ~/Pictures/Wallpapers/Debian.png --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -37,16 +37,15 @@ exec --no-startup-id nm-applet
 # Current keyboard layout applet
 exec --no-startup-id gxkb
 
-# Wallpapers
-exec --no-startup-id feh --bg-fill /home/arsnaz/Pictures/Wallpapers/debian12_1920x1080.png
+# Wallpaper
+exec --no-startup-id feh --bg-fill /home/arsnaz/Pictures/Wallpapers/wolfgang-hasselmann-pVr6wvUneMk-unsplash.jpg
 
 exec --no-startup-id redshift -c /home/arsnaz/.config/redshift.conf
 
 exec --no-startup-id picom
 
 # Hibernation with Lock screen
-# bindsym $mod+Escape exec "i3lock; systemctl hibernate"
-set $Locker i3lock -i  /home/arsnaz/Pictures/Wallpapers/debian12_1920x1080.png && sleep 1
+set $Locker i3lock -i /home/arsnaz/Pictures/Wallpapers/Debian.png && sleep 1 
 
 default_border pixel 2
 default_floating_border pixel 2
@@ -58,26 +57,24 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
-    # back to normal: Enter or Escape
+    # выход: Enter или Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
 bindsym $mod+Escape mode "$mode_system"
-
 # Screenshoots
 
 # to Folder
 bindsym Print exec --no-startup-id maim --select "/home/$USER/Pictures/Screenshots/$(date)"
-
 # To clipboard
 bindsym Ctrl+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # Brightness Control
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec  --no-startup-id light -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -94,7 +91,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty 
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -232,7 +229,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	position top
-	font pango:DejaVu Sans Mono 12
+	font pango:DejaVu Sans Mono 16
     status_command i3status
 }
 
