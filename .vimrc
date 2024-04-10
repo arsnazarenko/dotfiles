@@ -1,3 +1,8 @@
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set smartindent
 set showmatch
 set noswapfile
 set nobackup
@@ -13,7 +18,6 @@ set mouse=a
 syntax enable
 set cursorline
 set hidden
-" colorscheme koehler
 set number relativenumber
 set completeopt=longest,menuone
 set omnifunc=syntaxcomplete#Complete
