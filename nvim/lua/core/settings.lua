@@ -22,7 +22,7 @@ set.scrolloff = 8
 set.fileencoding = 'utf-8'
 set.termguicolors = true
 set.mouse = 'a'
-set.signcolumn = 'no'
+set.signcolumn = 'yes'
 
 
 set.cursorline = true
