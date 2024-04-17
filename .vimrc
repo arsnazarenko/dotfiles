@@ -41,3 +41,4 @@ if &term == 'alacritty'
 endif
 
 set background=dark
+colorscheme koehler
