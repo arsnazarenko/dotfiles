@@ -9,7 +9,7 @@ vim.keymap.set('v', '<leader>y', "\"+y")
 vim.keymap.set('n', '<leader>Y', "\"+Y")
 
 -- Markown viewer in Firefox
-vim.api.nvim_create_user_command("Markdown", "!chromium %:p &", {})
+vim.api.nvim_create_user_command("Markdown", "!firefox %:p &", {})
 
 arrow_disabled = function () print("Arrows disabled!") end
 
