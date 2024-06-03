@@ -217,6 +217,6 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	position top
-	font pango:DejaVu Sans Mono 13
+	font pango:DejaVu Sans Mono 12
     status_command i3status
 }

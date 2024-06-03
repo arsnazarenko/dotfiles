@@ -1,6 +1,7 @@
 local lspconfig = require('lspconfig')
 
 lspconfig.clangd.setup{}
+lspconfig.pylsp.setup{}
 lspconfig.rust_analyzer.setup {
     settings = {
         ['rust-analyzer'] = {

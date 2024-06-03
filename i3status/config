@@ -11,7 +11,7 @@ order += "volume master"
 order += "wireless _first_"
 order += "path_exists VPN"
 order += "battery all"
-# order += "disk /"
+order += "disk /"
 order += "memory"
 order += "cpu_usage"
 # order += "cpu_temperature 0"
@@ -125,6 +125,6 @@ cpu_usage {
 
 # вывод даты и времени по заданному формату
 tztime local {
-    format = " %Y-%m-%d %b  %H:%M"
+    format = " %A %d-%m-%Y %b  %H:%M"
 }
 
