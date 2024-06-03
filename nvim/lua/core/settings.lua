@@ -28,3 +28,9 @@ set.signcolumn = 'yes'
 set.cursorline = true
 set.hidden = true
 set.relativenumber = true
+
+
+set.keymap = 'russian-jcukenwin' -- Use Ctrl+^ to layout switch
+set.iminsert=0
+set.imsearch=0
+
