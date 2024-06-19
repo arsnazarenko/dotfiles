@@ -1,0 +1,7 @@
+#!/bin/bash
+QT_QPA_PLATFORM=wayland \
+XDG_CURRENT_DESKTOP=sway \
+XDG_SESSION_DESKTOP=sway \
+QT_QPA_PLATFORMTHEME=qt5ct \
+QT_WAYLAND_DISABLE_WINDOWDECORATION=1 \
+/usr/bin/sway -c ~/.config/sway/config
