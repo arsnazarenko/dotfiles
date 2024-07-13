@@ -27,11 +27,13 @@ set $menu bemenu-run -i -p "" --line-height 25 --hp 10 --tb "#1a1a1a" --tf "#00b
 output eDP-1 {
     resolution 2240x1400
     position 0,0
-    bg /home/arsnaz/Pictures/Wallpapers/blocks-T3mKJXfdims-unsplash.jpg fill
+    bg #000000 solid_color
+    # bg /home/arsnaz/Pictures/Wallpapers/blocks-T3mKJXfdims-unsplash.jpg fill
 }
 
 output HDMI-A-1 {
-    bg /home/arsnaz/Pictures/Wallpapers/blocks-T3mKJXfdims-unsplash.jpg fill
+    bg #000000 solid_color
+    # bg /home/arsnaz/Pictures/Wallpapers/blocks-T3mKJXfdims-unsplash.jpg fill
 }
 
 # Example configuration:
@@ -45,9 +47,9 @@ output HDMI-A-1 {
 # Example configuration:
 #
 exec swayidle -w \
-          timeout 300 'swaylock -f -i /home/arsnaz/Pictures/Wallpapers/wolfgang-hasselmann-pVr6wvUneMk-unsplash.jpg' \
+          timeout 300 'swaylock -f -i /home/arsnaz/Pictures/Wallpapers/blocks-T3mKJXfdims-unsplash.jpg' \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -i /home/arsnaz/Pictures/Wallpapers/wolfgang-hasselmann-pVr6wvUneMk-unsplash.jpg'
+          before-sleep 'swaylock -f -i /home/arsnaz/Pictures/Wallpapers/blocks-T3mKJXfdims-unsplash.jpg'
 
 
 
@@ -250,7 +252,7 @@ bindsym $ps3 exec grim $psf
 for_window [title = "Firefox - Sharing Indicator"] kill
 for_window [title = "Firefox — Sharing Indicator"] kill
 
-set $Locker swaylock -f -i /home/arsnaz/Pictures/Wallpapers/wolfgang-hasselmann-pVr6wvUneMk-unsplash.jpg 
+set $Locker swaylock -f -i /home/arsnaz/Pictures/Wallpapers/blocks-T3mKJXfdims-unsplash.jpg 
 
 # Login manager
 exec $Locker 
