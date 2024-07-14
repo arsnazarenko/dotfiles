@@ -5,10 +5,10 @@
 }
 
 window#waybar {
-    background-color: #000000;
-    /* background-color: rgba(43, 48, 59, 0.5); */
-    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    color: #ffffff;
+    /* background-color: #000000; */
+    background-color: rgba(43, 48, 59, 0.5);
+    border-bottom: 1px solid rgba(100, 114, 125, 0.5);
+    /* color: #ffffff; */
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -78,6 +78,8 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
+
+/*
 #clock,
 #battery,
 #cpu,
@@ -95,9 +97,9 @@ button:hover {
 #scratchpad,
 #power-profiles-daemon,
 #mpd {
-    padding: 0 10px;
-    color: #ffffff;
-}
+    padding: 0 10px; 
+} */
+
 
 #window,
 #workspaces {
@@ -114,19 +116,6 @@ button:hover {
     margin-right: 0;
 }
 
-#clock {
-    background-color: #000000;
-}
-
-#battery {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-#battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #000000;
-}
 
 @keyframes blink {
     to {
@@ -169,45 +158,6 @@ label:focus {
     background-color: #000000;
 }
 
-#cpu {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-#memory {
-    background-color: #000000;
-}
-
-#disk {
-    background-color: #000000;
-}
-
-#backlight {
-    background-color: #000000;
-}
-
-#network {
-    background-color: #000000;
-}
-
-#network.disconnected {
-    background-color: #000000;
-}
-
-#pulseaudio {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-#pulseaudio.muted {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-#wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
-}
 
 #wireplumber.muted {
     background-color: #f53c3c;
@@ -227,17 +177,6 @@ label:focus {
     background-color: #ffa000;
 }
 
-#temperature {
-    background-color: #f0932b;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
-}
-
-#tray {
-    background-color: #000000;
-}
 
 #tray > .passive {
     -gtk-icon-effect: dim;
@@ -274,10 +213,6 @@ label:focus {
     background-color: #51a37a;
 }
 
-#language {
-    background: #000000;
-    color: #ffffff;
-}
 
 #keyboard-state {
     background: #97e1ad;
@@ -324,8 +259,11 @@ label:focus {
     background-color: #0069d4;
 }
 
-#pulseaudio, #network, #memory, #temperature, #battery, #clock, #backlight, #cpu, #language {
+#mpd, #disk, #wireplumber, #custom-media, #mode, #idle_inhibitor, #scratchpad, #power-profiles-daemon, #language, #network, #pulseaudio, #memory, #temperature, #battery, #clock, #backlight, #cpu, #tray {
     padding-right: 5px;
     padding-left: 5px;
-    border-right: 1px solid #878787;
+    background-color: inherit;
+    color: #ffffff;
+    border-right: 1px solid rgba(100, 114, 125, 0.5);
+    border-bottom: inherit;
 }

@@ -18,6 +18,7 @@
     "modules-right": [
         // "mpd",
         // "idle_inhibitor",
+        "sway/language",
         "network",
         "pulseaudio",
         // "power-profiles-daemon",
@@ -29,7 +30,6 @@
         "battery",
         // "battery#bat2",
         "clock",
-        "sway/language",
         "tray"
     ],
     // Modules configuration
