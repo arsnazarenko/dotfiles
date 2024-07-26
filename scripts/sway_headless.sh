@@ -51,7 +51,7 @@ deactivate_headless () {
 }
 #
 # trap ctrl-c and deactivate_headless()
-trap deactivate_headless INT
+trap deactivate_headless SIGINT SIGQUIT SIGKILL
 # activate
 activate_headless
 
