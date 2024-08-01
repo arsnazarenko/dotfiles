@@ -1,9 +1,54 @@
 local lspconfig = require('lspconfig')
 
-lspconfig.clangd.setup{}
-lspconfig.rust_analyzer.setup {
+lspconfig.clangd.setup({
+  settings = {
+    clangd = {
+      InlayHints = {
+        Designators = true,
+        Enabled = true,
+        ParameterNames = true,
+        DeducedTypes = true,
+      },
+      fallbackFlags = { "-std=c++20" },
+    },
+  }
+})
+
+lspconfig.rust_analyzer.setup({
     settings = {
         ['rust-analyzer'] = {
+            inlayHints = {
+                bindingModeHints = {
+                    enable = false,
+                },
+                chainingHints = {
+                  enable = true,
+                },
+                closingBraceHints = {
+                  enable = true,
+                  minLines = 25,
+                },
+                closureReturnTypeHints = {
+                  enable = "never",
+                },
+                lifetimeElisionHints = {
+                  enable = "never",
+                  useParameterNames = false,
+                },
+                maxLength = 25,
+                parameterHints = {
+                  enable = true,
+                },
+                reborrowHints = {
+                  enable = "never",
+                },
+                renderColons = true,
+                typeHints = {
+                  enable = true,
+                  hideClosureInitialization = false,
+                  hideNamedConstructor = false,
+                },
+            },
             imports = {
                 granularity = {
                     group = "module",
@@ -29,23 +74,45 @@ lspconfig.rust_analyzer.setup {
             },
         },
     }
-}
-lspconfig.gopls.setup {
-    cmd = {'gopls'},
+})
+
+lspconfig.gopls.setup({
     settings = {
-        gopls = {
-        experimentalPostfixCompletions = true,
-        analyses = {
-            unusedparams = true,
-            shadow = true,
+        hints = {
+            rangeVariableTypes = true,
+            parameterNames = true,
+            constantValues = true,
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            functionTypeParameters = true,
         },
-        staticcheck = true,
+        gopls = {
+            experimentalPostfixCompletions = true,
+            analyses = {
+                unusedparams = true,
+                shadow = true,
+            },
+            gofumpt = true,
+            staticcheck = true,
         },
     },
     init_options = {
         usePlaceholders = true,
+    },
+})
+
+lspconfig.zls.setup({
+    settings = {
+        zls = {
+            enable_inlay_hints = true,
+            inlay_hints_show_builtin = true,
+            inlay_hints_exclude_single_argument = true,
+            inlay_hints_hide_redundant_param_names = false,
+            inlay_hints_hide_redundant_param_names_last_token = false,
+        },
     }
-}
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
