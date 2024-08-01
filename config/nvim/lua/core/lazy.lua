@@ -22,7 +22,6 @@ local plugins = {
     'hrsh7th/cmp-path', -- Snippets for path
     'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
     {"L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
     {'nvim-telescope/telescope.nvim', tag = '0.1.2', dependencies = { 'nvim-lua/plenary.nvim' } },
     {'MysticalDevil/inlay-hints.nvim', event = "LspAttach", dependencies = { "neovim/nvim-lspconfig" } },
     {'ellisonleao/gruvbox.nvim', priority = 1000 },
