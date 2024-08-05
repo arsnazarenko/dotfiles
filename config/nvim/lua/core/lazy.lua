@@ -24,7 +24,10 @@ local plugins = {
     {"L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
     {'nvim-telescope/telescope.nvim', tag = '0.1.2', dependencies = { 'nvim-lua/plenary.nvim' } },
     {'MysticalDevil/inlay-hints.nvim', event = "LspAttach", dependencies = { "neovim/nvim-lspconfig" } },
+    -- coloschemes
     {'ellisonleao/gruvbox.nvim', priority = 1000 },
+    {'doums/darcula', priority = 1000 },
+    
 
 }
 
