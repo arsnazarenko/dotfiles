@@ -1,4 +1,4 @@
-vim.cmd [[ colorscheme gruvbox ]]
+vim.cmd [[ colorscheme tokyonight ]]
 
 vim.cmd [[highlight Normal guibg=none ]]
 vim.cmd [[highlight NonText guibg=none ]]

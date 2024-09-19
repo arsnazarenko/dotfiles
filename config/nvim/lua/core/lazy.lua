@@ -25,8 +25,8 @@ local plugins = {
     {'nvim-telescope/telescope.nvim', tag = '0.1.2', dependencies = { 'nvim-lua/plenary.nvim' } },
     {'MysticalDevil/inlay-hints.nvim', event = "LspAttach", dependencies = { "neovim/nvim-lspconfig" } },
     -- coloschemes
-    {'ellisonleao/gruvbox.nvim', priority = 1000 },
-    {'doums/darcula', priority = 1000 },
+    {'ellisonleao/gruvbox.nvim', lazy = false, priority = 1000 },
+    {'folke/tokyonight.nvim', lazy = false, priority = 1000,}
     
 
 }
