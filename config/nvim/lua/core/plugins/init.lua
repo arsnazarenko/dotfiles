@@ -1,0 +1,5 @@
+require("core.plugins.lualine")
+require("core.plugins.telescope")
+require("core.plugins.lsp")
+require("core.plugins.cmp")
+require("core.plugins.inlay-hints")

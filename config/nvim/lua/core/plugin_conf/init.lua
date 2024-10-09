@@ -1,7 +1,0 @@
-require('core.plugin_conf.lualine')
-require('core.plugin_conf.lsp')
-require('core.plugin_conf.telescope')
-require('core.plugin_conf.colorscheme')
-require('core.plugin_conf.completion')
-require('core.plugin_conf.inlay-hints')
--- require('core.plugin_conf.treesitter')

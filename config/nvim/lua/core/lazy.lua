@@ -1,36 +1,49 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
+local plugins = {
+    -- Colorschemes and line format
+    {"ellisonleao/gruvbox.nvim", lazy = false, priority = 1000 },
+    {"folke/tokyonight.nvim", lazy = false, priority = 1000 },
+    "nvim-lualine/lualine.nvim",
 
-local plugins = { 
-    'nvim-lualine/lualine.nvim', -- Lualine 
-    'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP clientkk
+    -- Useful plugins
+    "tpope/vim-sleuth",
 
-    'hrsh7th/nvim-cmp', -- Autocompletion plugin
-    'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
-    'hrsh7th/cmp-buffer', -- Snippets for current buffer
-    'hrsh7th/cmp-path', -- Snippets for path
+    -- telescope
+    "nvim-lua/plenary.nvim",
+    { "nvim-telescope/telescope.nvim", tag = "0.1.8" },
+
+    -- lsp configuration
+    'neovim/nvim-lspconfig', 
+    {'MysticalDevil/inlay-hints.nvim', event = "LspAttach", dependencies = { "neovim/nvim-lspconfig" } },
+
+    
+
+    -- lsp snippets
+    'hrsh7th/nvim-cmp',         -- Autocompletion plugin
+    'hrsh7th/cmp-nvim-lsp',     -- LSP source for nvim-cmp
+    'hrsh7th/cmp-buffer',       -- Snippets for current buffer
+    'hrsh7th/cmp-path',         -- Snippets for path
     'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
     {"L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
-    {'nvim-telescope/telescope.nvim', tag = '0.1.2', dependencies = { 'nvim-lua/plenary.nvim' } },
-    {'MysticalDevil/inlay-hints.nvim', event = "LspAttach", dependencies = { "neovim/nvim-lspconfig" } },
-    -- coloschemes
-    {'ellisonleao/gruvbox.nvim', lazy = false, priority = 1000 },
-    {'folke/tokyonight.nvim', lazy = false, priority = 1000,}
-    
+
+
 
 }
 
+-- Setup lazy.nvim
 require("lazy").setup(plugins)
-
-
