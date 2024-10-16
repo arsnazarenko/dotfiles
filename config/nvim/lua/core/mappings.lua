@@ -13,10 +13,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- easy split generation
--- vim.keymap.set("n", "<leader>v", ":vsplit<CR>")				        -- space+v creates a veritcal split
--- vim.keymap.set("n", "<leader>s", ":split<CR>")				            -- space+s creates a horizontal split
-
 
 -- easy split navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
