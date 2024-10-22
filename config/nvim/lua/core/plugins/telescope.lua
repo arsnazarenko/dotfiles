@@ -8,3 +8,7 @@ vim.keymap.set('n', '<leader>fd', builtin.lsp_definitions, {})
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
 
+
+require('telescope').setup {
+  defaults = require('telescope.themes').get_ivy()
+}

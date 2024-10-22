@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     -- Colorschemes and line format
-    {"ellisonleao/gruvbox.nvim", lazy = false, priority = 1000 },
     {"folke/tokyonight.nvim", lazy = false, priority = 1000 },
     "nvim-lualine/lualine.nvim",
 
@@ -31,7 +30,6 @@ local plugins = {
     'neovim/nvim-lspconfig', 
     {'MysticalDevil/inlay-hints.nvim', event = "LspAttach", dependencies = { "neovim/nvim-lspconfig" } },
 
-    
 
     -- lsp snippets
     'hrsh7th/nvim-cmp',         -- Autocompletion plugin
