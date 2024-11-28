@@ -1,5 +1,3 @@
-import=["~/.config/alacritty/alacritty-tokyo-night.toml"]
-
 [env]
 TERM = "xterm-256color"
 
@@ -22,10 +20,15 @@ style = "Italic"
 family = "FiraCode Nerd Font"
 style = "Regular"
 
-[window]
-dynamic_padding = true
-opacity = 0.85
-
 [window.padding]
 x = 5
 y = 5
+
+[window]
+opacity = 1
+
+[colors.primary]
+background = "#0d0d0d"
+
+# [general]
+# import=["~/.config/alacritty/alacritty-tokyo-night.toml"]

@@ -17,7 +17,7 @@ vim.opt.signcolumn = yes
 vim.opt.syntax = "on"
 vim.opt.wrap = true		                    -- enable text wrapping
 vim.opt.breakindent = true
-vim.opt.undofile = true -- Save undo history
+vim.opt.undofile = false -- Save undo history
 vim.opt.signcolumn = 'yes'
 
 
