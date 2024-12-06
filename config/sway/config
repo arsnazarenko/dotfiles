@@ -4,6 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 font pango: SourceCodePro 10
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -16,14 +17,9 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu bemenu-run -i -p "" --line-height 25 --hp 10 --tb "#1a1a1a" --tf "#00bfff" --fb "#1a1a1a" --nb "#1a1a1a" --ab "#1a1a1a" --hb "#1a1a1a" --hf "#00bfff" | xargs swaymsg exec --
-
+set $menu wmenu-run
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output eDP-1 {
     bg #000000 solid_color
 }
@@ -36,31 +32,17 @@ output DP-1 {
     bg #000000 solid_color
     resolution 2560x1440@100.000Hz
 }
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
 ### Idle configuration
-#
-# Example configuration:
-#
 exec swayidle -w \
           timeout 300 'swaylock -f -i /home/arsnaz/Pictures/Wallpapers/cleveland-wallpaper.jpg' \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'swaylock -f -i /home/arsnaz/Pictures/Wallpapers/cleveland-wallpaper.jpg'
- 
-
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-#
 input type:touchpad {
     dwt enabled
     tap enabled
@@ -72,8 +54,6 @@ input type:keyboard {
     xkb_layout us,ru
     xkb_options grp:alt_shift_toggle
 }
-
-#
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
@@ -81,16 +61,6 @@ input type:keyboard {
 #
 # Basics:
 #
-
-
-
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-
     # Start a terminal
     bindsym --to-code $mod+Return exec $term
 
@@ -127,15 +97,15 @@ input type:keyboard {
     bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    bindsym --to-code $mod+Shift+$left move left
+    bindsym --to-code $mod+Shift+$down move down
+    bindsym --to-code $mod+Shift+$up move up
+    bindsym --to-code $mod+Shift+$right move right
     # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+    bindsym --to-code $mod+Shift+Left move left
+    bindsym --to-code $mod+Shift+Down move down
+    bindsym --to-code $mod+Shift+Up move up
+    bindsym --to-code $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -181,10 +151,10 @@ input type:keyboard {
     bindsym --to-code $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym --to-code $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym --to-code $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym --to-code $mod+a focus parent
@@ -195,11 +165,11 @@ input type:keyboard {
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym --to-code $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym --to-code $mod+minus scratchpad show
 #
 # Resizing containers:
 #
@@ -208,27 +178,57 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym --to-code $left resize shrink width 10px
+    bindsym --to-code $down resize grow height 10px
+    bindsym --to-code $up resize shrink height 10px
+    bindsym --to-code $right resize grow width 10px
 
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym --to-code Left resize shrink width 10px
+    bindsym --to-code Down resize grow height 10px
+    bindsym --to-code Up resize shrink height 10px
+    bindsym --to-code Right resize grow width 10px
 
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym --to-code $mod+r mode "resize"
+bindsym $mod+r mode "resize"
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special key to take a screenshot with grim
+    bindsym Print exec grim - | wl-copy
+    bindsym Control+Print exec grim -g "$(slurp)" - | wl-copy
+    bindsym Alt+Print exec grim /home/arsnaz/Pictures/Screenshots/ps_$(date +"%Y%m%d%H%M%S").png
+
 
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
+# bar {
+#     position top
+# 
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+# 
+#     colors {
+#         statusline #ffffff
+#         background #323232
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
+
 bar {
     swaybar_command waybar
     workspace_buttons yes
@@ -236,42 +236,17 @@ bar {
 
 gaps inner 2
 gaps outer 2
-smart_gaps on
 default_border pixel 2
 
-set $ps1 Print
-set $ps2 Control+Print
-set $ps3 Alt+Print
-set $psf /home/arsnaz/Pictures/Screenshots/ps_$(date +"%Y%m%d%H%M%S").png
-
-bindsym $ps1 exec grim - | wl-copy
-bindsym $ps2 exec grim -g "$(slurp)" - | wl-copy
-bindsym $ps3 exec grim $psf
-
-# Remove sharing firefox window
-for_window [title = "Firefox - Sharing Indicator"] kill
-for_window [title = "Firefox — Sharing Indicator"] kill
-
-set $Locker swaylock -f -i /home/arsnaz/Pictures/Wallpapers/cleveland-wallpaper.jpg
-
-# Login manager
-exec $Locker 
-
-exec --no-startup-id dbus-update-activation-environment --all
-exec nm-applet --indicator
-exec blueman-applet
-exec wl-paste -t text --watch clipman store --no-persist
-exec gammastep -c /home/arsnaz/.config/gammastep/config.ini
-exec swaync
-
+# lock and exit
 bindswitch --reload --locked lid:on exec $Locker 
 
-set $mode_system System (l) lock, (e) logout, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $Locker swaylock -f -i /home/arsnaz/Pictures/Wallpapers/cleveland-wallpaper.jpg
+set $mode_system System (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown
 
 mode "$mode_system" {
     bindsym --to-code l exec $Locker, mode "default"
     bindsym --to-code e exec swaymsg exit, mode "default"
-    bindsym --to-code h exec $Locker && systemctl hibernate, mode "defualt"
     bindsym --to-code r exec systemctl reboot, mode "default"
     bindsym --to-code Shift+s exec systemctl poweroff -i, mode "default"
 
@@ -279,7 +254,15 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
 bindsym $mod+Escape mode "$mode_system"
 
-include /etc/sway/config.d/*
+
+# Remove sharing firefox window
+for_window [title = "Firefox - Sharing Indicator"] kill
+for_window [title = "Firefox — Sharing Indicator"] kill
+
+# Autostart
+exec --no-startup-id dbus-update-activation-environment --all
+exec --no-startup-id nm-applet --indicator
+exec --no-startup-id blueman-applet
+exec --no-startup-id /home/arsnaz/dev/scripts/run_dpi.sh
