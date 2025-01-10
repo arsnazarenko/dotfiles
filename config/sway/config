@@ -265,4 +265,7 @@ for_window [title = "Firefox — Sharing Indicator"] kill
 exec --no-startup-id dbus-update-activation-environment --all
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id blueman-applet
-exec --no-startup-id /home/arsnaz/dev/scripts/run_dpi.sh
+
+# Prevent locking when something opened in fullscreen mode
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
