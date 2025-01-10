@@ -1,9 +1,0 @@
-[user]
-	email = arsnazarenko@gmail.com
-	name = arsnazarenko
-[url "git@github.com:"]
- insteadOf = https://github.com/
-[diff]
-	tool = nvimdiff
-[difftool]
-	prompt = false
