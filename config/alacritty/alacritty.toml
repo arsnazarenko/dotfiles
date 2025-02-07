@@ -24,11 +24,9 @@ style = "Regular"
 x = 5
 y = 5
 
-[window]
-opacity = 1
+#[general]
+#import=["~/.config/alacritty/alabaster.toml"]
 
 #[colors.primary]
-#background = "#0d0d0d"
+#background = "#FFFFFF"
 
-# [general]
-# import=["~/.config/alacritty/alacritty-tokyo-night.toml"]

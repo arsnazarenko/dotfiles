@@ -3,7 +3,7 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-font pango: SourceCodePro 10
+font pango: SourceCodePro 12
 
 ### Variables
 #
@@ -21,7 +21,7 @@ set $menu wmenu-run
 
 ### Output configuration
 output eDP-1 {
-    bg #000000 solid_color
+    bg #000000 solid_color scale 1
 }
 
 output HDMI-A-1 {
@@ -34,9 +34,9 @@ output DP-1 {
 }
 ### Idle configuration
 exec swayidle -w \
-          timeout 300 'swaylock -f -i /home/arsnaz/Pictures/Wallpapers/cleveland-wallpaper.jpg' \
+          timeout 300 'swaylock -f -i /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png' \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -i /home/arsnaz/Pictures/Wallpapers/cleveland-wallpaper.jpg'
+          before-sleep 'swaylock -f -i /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -241,7 +241,7 @@ default_border pixel 2
 # lock and exit
 bindswitch --reload --locked lid:on exec $Locker 
 
-set $Locker swaylock -f -i /home/arsnaz/Pictures/Wallpapers/cleveland-wallpaper.jpg
+set $Locker swaylock -f -i /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
 set $mode_system System (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown
 
 mode "$mode_system" {
