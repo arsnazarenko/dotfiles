@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>e", ":25Lex<CR>")			            -- space+e toggles netrw tree view 
+vim.keymap.set("n", "<leader>e", ":Ex<CR>")			            -- space+e toggles netrw tree view 
 
 -- move lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
