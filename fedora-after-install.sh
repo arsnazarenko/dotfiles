@@ -24,4 +24,4 @@ systemctl daemon-reload
 
 
 ln -sf /usr/bin/nvim /usr/local/bin/vim
-
+mkdir ~/.config/fontconfig && cp ./fonts.conf ~/.config/fontconfig/
