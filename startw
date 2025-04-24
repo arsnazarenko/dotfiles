@@ -7,4 +7,4 @@ QT_QPA_PLATFORMTHEME=qt5ct \
 QT_WAYLAND_DISABLE_WINDOWDECORATION=1 \
 _JAVA_AWT_WM_NONREPARENTING=1 \
 _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true' \
-/usr/bin/sway -c ~/.config/sway/config
+/usr/bin/sway -c /home/arsnaz/.config/sway/config

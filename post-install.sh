@@ -2,7 +2,10 @@ sudo apt update && sudo apt upgrade --no-install-recommends
 sudo apt install sway firefox git --no-install-recommends
 
 # packages (names can be diff)
-sudo apt install alsa-sof-firmware pipewire pipewire-pulseaudio wireplumber pavucontrol xdg-desktop-portal xdg-desktop-portal-wlr waybar firefox alacritty chromium tmux git neovim ripgrep wl-clipboard thunar blueman swaylock swayidle network-manager-applet NetworkManager-openvpn NetworkManager vlc obs-studio vlc-plugin-gstreamer vlc-plugin-ffmpeg keepassxc rclone cups cups-pdf dbus-daemon google-noto-color-emoji-fonts cups cups-pdf gutenprint-cups system-config-printer grim slurp wlr-randr wl-mirror --no-install-recommends
+
+sudo apt install sway git tmux pipewire pipewire-pulseaudio wireplumber pavucontrol xdg-desktop-portal xdg-desktop-portal-wlr waybar firefox alacritty chromium tmux git neovim ripgrep wl-clipboard thunar blueman swaylock swayidle  network-manager network-manager-openvpn network-manager-applet 
+
+sudo apt install pipewire pipewire-pulseaudio wireplumber pavucontrol xdg-desktop-portal xdg-desktop-portal-wlr waybar firefox alacritty chromium tmux git neovim ripgrep wl-clipboard thunar blueman swaylock swayidle network-manager-applet NetworkManager-openvpn NetworkManager vlc obs-studio vlc-plugin-gstreamer vlc-plugin-ffmpeg keepassxc rclone cups cups-pdf dbus-daemon google-noto-color-emoji-fonts cups cups-pdf gutenprint-cups system-config-printer grim slurp wlr-randr wl-mirror --no-install-recommends
 
 # services
 systemctl --user enable mpris-proxy
