@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: monospace;
-    font-size: 18;
+    font-size: 20;
 }
 
 window#waybar {

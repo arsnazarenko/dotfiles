@@ -38,10 +38,10 @@ local plugins = {
     'hrsh7th/cmp-path',         -- Snippets for path
     'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
     {"L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
+    {"nvim-treesitter/nvim-treesitter", build = {":TSUpdate"} },
 
     -- Git signs
     'lewis6991/gitsigns.nvim',
-
 }
 
 -- Setup lazy.nvim
