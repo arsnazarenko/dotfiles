@@ -1,4 +1,4 @@
-vim.cmd [[ colorscheme tokyonight ]]
+vim.cmd [[ colorscheme gruvbox ]]
 
 vim.cmd [[highlight Normal guibg=none ]]
 vim.cmd [[highlight NonText guibg=none ]]
@@ -8,3 +8,5 @@ vim.cmd [[highlight SignColumn ctermbg=none ]]
 vim.cmd [[highlight SignColumn guibg=none ]]
 vim.cmd [[highlight NormalNC guibg=none ]]
 vim.cmd [[highlight NormalNC ctermbg=none ]]
+
+

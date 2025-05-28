@@ -1,4 +1,6 @@
-vim.keymap.set("n", "<leader>e", ":Ex<CR>")			            -- space+e toggles netrw tree view 
+-- Mappings
+vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>e", ":Ex<CR>")
 
 -- move lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -13,6 +15,13 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- No search visualisation on Esc
+vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>')
+
+-- copy to out buffer
+vim.keymap.set('n', '<leader>y', "\"+y")
+vim.keymap.set('v', '<leader>y', "\"+y")
+vim.keymap.set('n', '<leader>Y', "\"+Y")
 
 -- easy split navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -28,30 +37,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-
--- Visual vim.keymap.sets
-vim.keymap.set("v", "<C-s>", ":sort<CR>")							-- Sort highlighted text in visual mode with Control+S
-vim.keymap.set("v", "<leader>r", "\"hy:%s/<C-r>h//g<left><left>")   -- Replace all instances of highlighted words 
-
--- Resize splits
-vim.keymap.set("n", "<C-left>", ":vertical resize +3<CR>")
-vim.keymap.set("n", "<C-right>", ":vertical resize -3<CR>")
-
--- Scrolling revim.keymap.sets
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
-
--- No search visualisation on Esc
-vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>')
-
--- copy to out buffer
-vim.keymap.set('n', '<leader>y', "\"+y")
-vim.keymap.set('v', '<leader>y', "\"+y")
-vim.keymap.set('n', '<leader>Y', "\"+Y")
-
--- Markown viewer in Firefox
-
 arrow_disabled = function () print("Arrows disabled!") end
 
 -- Disable arrows in all modes
@@ -60,4 +45,5 @@ vim.keymap.set({'n', 'i', 'v'}, '<down>', arrow_disabled)
 vim.keymap.set({'n', 'i', 'v'}, '<left>', arrow_disabled)
 vim.keymap.set({'n', 'i', 'v'}, '<right>', arrow_disabled)
 
+-- Markown viewer in Firefox
 vim.api.nvim_create_user_command("Markdown", "!firefox %:p &", {})

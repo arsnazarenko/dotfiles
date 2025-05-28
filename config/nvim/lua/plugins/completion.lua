@@ -1,9 +1,7 @@
--- Add additional capabilities supported by nvim-cmp
+local lspconfig = require('lspconfig')
+local cmp = require('cmp')
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local lspconfig = require('lspconfig')
-
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = { 'clangd', 'rust_analyzer', 'gopls' }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
@@ -11,17 +9,7 @@ for _, lsp in ipairs(servers) do
     }
 end
 
--- luasnip setup
-local luasnip = require 'luasnip'
-
--- nvim-cmp setup
-local cmp = require 'cmp'
 cmp.setup {
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
-    },
     mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
         ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
@@ -34,7 +22,6 @@ cmp.setup {
     sources = {
         {name = 'path'},
         {name = 'nvim_lsp', keyword_length = 1},
-        {name = 'luasnip', keyword_length = 2 },
         {name = 'buffer', keyword_length = 3 },
     },
     window = {
@@ -57,7 +44,3 @@ vim.diagnostic.config({
         prefix = '',
     },
 })
-
--- Snippets
-require("luasnip.loaders.from_vscode").load({ include = { "c", "markdown", "rust", "go" }})
-

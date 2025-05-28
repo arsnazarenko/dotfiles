@@ -1,28 +1,10 @@
-require("core.settings")
-require("core.mappings")
-require("core.lazy")
-require("core.colorscheme")
-require("core.plugins")
+-- Core settings
+require("core/settings")
+require("core/mappings")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- Plugins
+require("plugins/lazy")
+require("plugins/lsp")
+require("plugins/completion")
+require("plugins/telescope")
+require("plugins/colorscheme")

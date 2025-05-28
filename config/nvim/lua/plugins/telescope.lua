@@ -12,3 +12,4 @@ vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
 require('telescope').setup {
   defaults = require('telescope.themes').get_ivy()
 }
+

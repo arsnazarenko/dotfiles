@@ -18,9 +18,6 @@ lspconfig.rust_analyzer.setup({
     settings = {
         ['rust-analyzer'] = {
             inlayHints = {
-                bindingModeHints = {
-                    enable = false,
-                },
                 chainingHints = {
                   enable = true,
                 },
@@ -28,25 +25,13 @@ lspconfig.rust_analyzer.setup({
                   enable = true,
                   minLines = 25,
                 },
-                closureReturnTypeHints = {
-                  enable = "never",
-                },
-                lifetimeElisionHints = {
-                  enable = "never",
-                  useParameterNames = false,
-                },
                 maxLength = 25,
                 parameterHints = {
                   enable = true,
                 },
-                reborrowHints = {
-                  enable = "never",
-                },
                 renderColons = true,
                 typeHints = {
                   enable = true,
-                  hideClosureInitialization = false,
-                  hideNamedConstructor = false,
                 },
             },
             imports = {
@@ -102,20 +87,7 @@ lspconfig.gopls.setup({
     },
 })
 
-lspconfig.zls.setup({
-    settings = {
-        zls = {
-            enable_inlay_hints = true,
-            inlay_hints_show_builtin = true,
-            inlay_hints_exclude_single_argument = true,
-            inlay_hints_hide_redundant_param_names = false,
-            inlay_hints_hide_redundant_param_names_last_token = false,
-        },
-    }
-})
-
 -- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
@@ -146,4 +118,3 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-

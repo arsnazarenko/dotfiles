@@ -1,7 +1,0 @@
-require("core.plugins.lualine")
-require("core.plugins.telescope")
-require("core.plugins.lsp")
-require("core.plugins.cmp")
-require("core.plugins.inlay-hints")
-require("core.plugins.gitsigns")
-require("core.plugins.treesitter")
