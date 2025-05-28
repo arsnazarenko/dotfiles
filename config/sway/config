@@ -269,3 +269,5 @@ exec --no-startup-id blueman-applet
 # Prevent locking when something opened in fullscreen mode
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
+
+include ./config.d/*
