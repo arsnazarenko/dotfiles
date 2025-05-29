@@ -9,6 +9,7 @@ lspconfig.clangd.setup({
         ParameterNames = true,
         DeducedTypes = true,
       },
+      cmd = { "clangd", "--background-index", "--clang-tidy", "--header-insertion=iwyu", "--inlay-hints" },
       fallbackFlags = { "-std=c++20" },
     },
   }
@@ -18,20 +19,14 @@ lspconfig.rust_analyzer.setup({
     settings = {
         ['rust-analyzer'] = {
             inlayHints = {
-                chainingHints = {
-                  enable = true,
-                },
+                enable = true,
+                typeHints = true,
+                chainingHints = true,
+                parameterHints = true,
+                renderColons = true,
                 closingBraceHints = {
                   enable = true,
                   minLines = 25,
-                },
-                maxLength = 25,
-                parameterHints = {
-                  enable = true,
-                },
-                renderColons = true,
-                typeHints = {
-                  enable = true,
                 },
             },
             imports = {
@@ -63,16 +58,10 @@ lspconfig.rust_analyzer.setup({
 
 lspconfig.gopls.setup({
     settings = {
-        hints = {
-            rangeVariableTypes = true,
-            parameterNames = true,
-            constantValues = true,
-            assignVariableTypes = true,
-            compositeLiteralFields = true,
-            compositeLiteralTypes = true,
-            functionTypeParameters = true,
-        },
         gopls = {
+            init_options = {
+                usePlaceholders = true,
+            },
             experimentalPostfixCompletions = true,
             analyses = {
                 unusedparams = true,
@@ -80,10 +69,15 @@ lspconfig.gopls.setup({
             },
             gofumpt = true,
             staticcheck = true,
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            },
         },
-    },
-    init_options = {
-        usePlaceholders = true,
     },
 })
 
@@ -112,9 +106,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   desc = 'Enable inlay hints on LSP attach',
+--   callback = function(args)
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+--     if client and client.server_capabilities.inlayHintProvider then
+--       vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+--     end
+--   end,
+-- })
+
+
+vim.lsp.inlay_hint.enable(true)
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
