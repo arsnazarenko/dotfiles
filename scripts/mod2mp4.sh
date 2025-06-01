@@ -1,19 +1,44 @@
 #!/bin/bash
 
-# Using:
-# ./mod2mp4 <FILE.MOD> <OUTPUT_DIR_FOR_MP4>
+if [ ! $# -eq 3 ]
+then
+    echo "3 arguments required:"
+    echo "Using: "
+    echo "./mod2mp4 -f <FILE.MOD> <OUTPUT_DIR_FOR_MP4>"
+    echo "./mod2mp4 -d <DIR> <OUTPUT_DIR_FOR_MP4_FILES>"
+    exit 1
+fi
 
-IN=$1
-DIR=$2
-OUT=$DIR/`basename ${IN//MOD/mp4}`
+if [ ! -f $2 ]
+then
+    mkdir -p $3
+fi
 
-mkdir -p `pwd`/$2
+if [[ "$1" == "-f" ]]
+then
 
-echo in: $IN
-echo out: $OUT
+    tmp=$(basename $2)
+    resultfile=$3/${tmp//"MOD"/"mp4"}
+    convert_mod_to_mp4 "$2" "$resultfile"
+fi
 
-ffmpeg -y -i $IN -c:v libx264 -b:v 6500k -pass 1 -an -f null -preset slower -crf 22 -tune grain /dev/null && \
-ffmpeg -i $IN -c:v libx264 -b:v 6500k -pass 2 -c:a aac -preset slower -crf 20 -tune grain $OUT
+if [[ "$1" == "-d" ]]
+then
 
-rm -rf ./*.mbtree ./*.log
+    for f in "$2"/*.MOD
+    do 
+        tmp=$(basename $f)
+        resultfile=$3/${tmp//"MOD"/"mp4"}
+        convert_mod_to_mp4 "$f" "$resultfile"
+    done
+fi
 
+function convert_mod_to_mp4 {
+    local input="$1"
+    local output="$2"
+    echo "Input file: $input"
+    echo "Output file: $output"
+
+    ffmpeg -y -i $input -c:v libx264 -b:v 6500k -pass 1 -an -f null -preset slower -crf 22 -tune grain /dev/null && \
+    ffmpeg -i $input -c:v libx264 -b:v 6500k -pass 2 -c:a aac -preset slower -crf 20 -tune grain $output
+}
