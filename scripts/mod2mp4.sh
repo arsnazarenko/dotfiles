@@ -1,5 +1,17 @@
 #!/bin/bash
 
+function convert_mod_to_mp4 {
+    local input="$1"
+    local output="$2"
+    echo "Input file: $input"
+    echo "Output file: $output"
+
+    ffmpeg -y -i $input -c:v libx264 -b:v 6500k -pass 1 -an -f null -preset slower -crf 22 -tune grain /dev/null && \
+    ffmpeg -i $input -c:v libx264 -b:v 6500k -pass 2 -c:a aac -preset slower -crf 20 -tune grain $output
+    rm -rf ffmpeg2pass*
+}
+
+
 if [ ! $# -eq 3 ]
 then
     echo "3 arguments required:"
@@ -33,12 +45,3 @@ then
     done
 fi
 
-function convert_mod_to_mp4 {
-    local input="$1"
-    local output="$2"
-    echo "Input file: $input"
-    echo "Output file: $output"
-
-    ffmpeg -y -i $input -c:v libx264 -b:v 6500k -pass 1 -an -f null -preset slower -crf 22 -tune grain /dev/null && \
-    ffmpeg -i $input -c:v libx264 -b:v 6500k -pass 2 -c:a aac -preset slower -crf 20 -tune grain $output
-}

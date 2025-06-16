@@ -11,7 +11,7 @@ vim.opt.number = true
 vim.opt.signcolumn = "yes"
 vim.opt.syntax = "on"
 vim.opt.wrap = true
-vim.opt.breakindent = true
+-- vim.opt.breakindent = true
 vim.opt.undofile = false
 vim.showcmd = true
 vim.showmode = true
@@ -20,6 +20,7 @@ vim.opt.sidescrolloff = 8
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = false
+vim.opt.colorcolumn = "100"
 
 -- Idents
 vim.opt.expandtab = true
