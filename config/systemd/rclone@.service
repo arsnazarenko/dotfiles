@@ -1,4 +1,5 @@
 # User service for Rclone mounting
+# Current unit mount cloud drive directory Sync into path ~/Cloud/<remote-name>
 #
 # Place in ~/.config/systemd/user/
 # File must include the '@' (ex rclone@.service)
