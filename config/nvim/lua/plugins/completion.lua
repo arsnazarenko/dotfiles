@@ -1,13 +1,4 @@
-local lspconfig = require('lspconfig')
 local cmp = require('cmp')
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-local servers = { 'clangd', 'rust_analyzer', 'gopls' }
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        capabilities = capabilities,
-    }
-end
 
 cmp.setup {
     mapping = cmp.mapping.preset.insert({
@@ -30,17 +21,17 @@ cmp.setup {
     -- },
 }
 
-vim.diagnostic.config({
-    virtual_text = true,
-    signs = true,
-    update_in_insert = true,
-    underline = false,
-    severity_sort = false,
-    float = {
-        focusable = false,
-        border = 'rounded',
-        source = 'always',
-        header = '',
-        prefix = '',
-    },
-})
+-- vim.diagnostic.config({
+--     virtual_text = true,
+--     signs = true,
+--     update_in_insert = true,
+--     underline = true,
+--     severity_sort = true,
+--     float = {
+--         focusable = false,
+--         border = 'rounded',
+--         source = 'always',
+--         header = '',
+--         prefix = '',
+--     },
+-- })

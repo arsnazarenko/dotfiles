@@ -1,124 +1,130 @@
-local lspconfig = require('lspconfig')
+local lsp = require('lspconfig')
+local util = require('lspconfig/util')
 
-lspconfig.clangd.setup({
-  settings = {
-    clangd = {
-      InlayHints = {
-        Designators = true,
-        Enabled = true,
-        ParameterNames = true,
-        DeducedTypes = true,
-      },
-      cmd = { "clangd", "--background-index", "--clang-tidy", "--header-insertion=iwyu", "--inlay-hints" },
-      fallbackFlags = { "-std=c++20" },
-    },
-  }
-})
+-- Общие настройки LSP
+local on_attach = function(client, bufnr)
+  -- Включить поддержку format-on-save для соответствующих серверов
+  client.server_capabilities.documentFormattingProvider = true
 
-lspconfig.rust_analyzer.setup({
+  -- Настройка сочетаний клавиш
+  local opts = { buffer = bufnr, silent = true }
+
+  -- Навигация
+  vim.keymap.set('n', '<leader>fd', vim.lsp.buf.definition, opts) -- Go to definition
+  vim.keymap.set('n', '<leader>fr', vim.lsp.buf.references, opts) -- Go to references
+  vim.keymap.set('n', '<leader>fi', vim.lsp.buf.implementation, opts) -- Go to implementation
+  vim.keymap.set('n', '<leader>fD', vim.lsp.buf.declaration, opts) -- Go to declaration
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts) -- Show documentation
+
+  -- Работа с кодом
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts) -- Code actions
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts) -- Rename symbol
+  vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts) -- Format code
+
+  -- Диагностика
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- Previous diagnostic
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts) -- Next diagnostic
+  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts) -- Show diagnostic in float window
+end
+
+-- Настройки серверов LSP
+local servers = {
+  -- Golang
+  gopls = {
+    cmd = {'gopls'},
+    filetypes = {'go', 'gomod', 'gowork', 'gotmpl'},
+    root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
     settings = {
-        ['rust-analyzer'] = {
-            inlayHints = {
-                enable = true,
-                typeHints = true,
-                chainingHints = true,
-                parameterHints = true,
-                renderColons = true,
-                closingBraceHints = {
-                  enable = true,
-                  minLines = 25,
-                },
-            },
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
-            },
-            cargo = {
-                buildScripts = {
-                    enable = true,
-                },
-            },
-            checkOnSave = {
-                command = 'clippy',
-            },
-            procMacro = {
-                enable = true
-            },
-            diagnostics = {
-                enable = true,
-                experimental = {
-                    enable = true,
-                },
-            },
+      gopls = {
+        init_options = {
+            usePlaceholders = true,
         },
+        experimentalPostfixCompletions = true,
+        completeUnimported = true,
+        analyses = {
+            unusedparams = true,
+            shadow = true,
+        },
+        gofumpt = true,
+        staticcheck = true,
+        hints = {
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
+        },
+      }
     }
-})
+  },
 
-lspconfig.gopls.setup({
+  -- Rust
+  rust_analyzer = {
+    cmd = {'rust-analyzer'},
+    filetypes = {'rust'},
+    root_dir = util.root_pattern('Cargo.toml'),
     settings = {
-        gopls = {
-            init_options = {
-                usePlaceholders = true,
-            },
-            experimentalPostfixCompletions = true,
-            analyses = {
-                unusedparams = true,
-                shadow = true,
-            },
-            gofumpt = true,
-            staticcheck = true,
-            hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
+      ['rust-analyzer'] = {
+        procMacro = {
+            enable = true
+        },
+        cargo = {
+          allFeatures = true,
+        },
+        checkOnSave = {
+          command = 'clippy'
+        },
+        inlayHints = {
+            enable = true,
+            typeHints = true,
+            chainingHints = true,
+            parameterHints = true,
+            renderColons = true,
+            closingBraceHints = {
+              enable = true,
+              minLines = 25,
             },
         },
+      }
+    }
+  },
+
+  -- C/C++
+  clangd = {
+    InlayHints = {
+      Designators = true,
+      Enabled = true,
+      ParameterNames = true,
+      DeducedTypes = true,
     },
+    cmd = { "clangd", "--background-index", "--clang-tidy", "--header-insertion=iwyu", "--inlay-hints" },
+    fallbackFlags = { "-std=c++20" },
+    filetypes = {'c', 'cpp', 'objc', 'objcpp'},
+    root_dir = util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git'),
+  }
+}
+
+-- Установка и настройка серверов
+for server, config in pairs(servers) do
+  config.on_attach = on_attach
+  config.capabilities = require('cmp_nvim_lsp').default_capabilities()
+  lsp[server].setup(config)
+end
+
+-- Настройка диагностики
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = false,
 })
 
--- Global mappings.
-vim.keymap.set('n', '<space>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
-
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts) 
-    vim.keymap.set('n', '<space>f', function()
-        vim.lsp.buf.format { async = true }
-    end, opts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-  end,
-})
-
--- vim.api.nvim_create_autocmd('LspAttach', {
---   desc = 'Enable inlay hints on LSP attach',
---   callback = function(args)
---     local client = vim.lsp.get_client_by_id(args.data.client_id)
---     if client and client.server_capabilities.inlayHintProvider then
---       vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
---     end
---   end,
--- })
-
-
+-- enable inlay hist
 vim.lsp.inlay_hint.enable(true)
 
+-- Значки для диагностики
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
