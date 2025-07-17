@@ -32,7 +32,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<M-k>', ':cprev<CR>zz', { desc = 'Quickfixlist prev item' })
 vim.keymap.set('n', '<M-j>', ':cnext<CR>zz', { desc = 'Quickfixlist next item' })
 vim.keymap.set('n', '<M-q>', ':copen<CR>', { desc = 'Open Quickfixlist' })
-vim.keymap.set('n', '<Esc>', ':cclose<CR>', {desc = 'Close Quickfixlist' })
+vim.keymap.set('n', '<M-c>', ':cclose<CR>', {desc = 'Close Quickfixlist' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',

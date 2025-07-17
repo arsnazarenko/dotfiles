@@ -24,7 +24,7 @@ local on_attach = function(client, bufnr)
   -- Диагностика
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- Previous diagnostic
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts) -- Next diagnostic
-  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts) -- Show diagnostic in float window
+  vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts) -- Show diagnostic in float window
 end
 
 -- Настройки серверов LSP
