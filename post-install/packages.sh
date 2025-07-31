@@ -17,7 +17,14 @@ systemctl daemon-reload
 # emojis priority
 mkdir ~/.config/fontconfig && cp ./fonts.conf ~/.config/fontconfig/
 
-# gnome i3-like keybindings
-for i in {1..9}; do gsettings set "org.gnome.shell.keybindings" "switch-to-application-${i}" "[]" ; done
-for i in {1..9}; do gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']" ; done
-for i in {1..9}; do gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Shift><Super>$i']" ; done 
+gsettings set org.gnome.mutter dynamic-workspaces false
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 9
+for i in {1..9}; do
+  gsettings set "org.gnome.shell.keybindings" "switch-to-application-${i}" "[]"
+  gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-${i}" "['<Super>${i}']"
+  gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-${i}" "['<Super><Shift>${i}']"
+  gsettings set "org.gnome.shell.extensions.dash-to-dock" "app-hotkey-${i}" "[]"
+done
+
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Shift>Alt_L']"
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Shift>Alt_L']"
