@@ -29,10 +29,6 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<M-k>', ':cprev<CR>zz', { desc = 'Quickfixlist prev item' })
-vim.keymap.set('n', '<M-j>', ':cnext<CR>zz', { desc = 'Quickfixlist next item' })
-vim.keymap.set('n', '<M-q>', ':copen<CR>', { desc = 'Open Quickfixlist' })
-vim.keymap.set('n', '<M-c>', ':cclose<CR>', {desc = 'Close Quickfixlist' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -52,3 +48,25 @@ vim.keymap.set({'n', 'i', 'v'}, '<right>', arrow_disabled)
 
 -- Markown viewer in Firefox
 vim.api.nvim_create_user_command("Markdown", "!firefox %:p &", {})
+
+
+local function toggle_quickfix()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.api.nvim_buf_get_option(buf, "buftype") == "quickfix" then
+      vim.cmd("cclose")
+      return
+    end
+  end
+  
+  if #vim.fn.getqflist() > 0 then
+    vim.cmd("copen")
+  else
+    print("Quickfix list is empty")
+  end
+end
+
+
+vim.keymap.set('n', '<M-q>', toggle_quickfix, { noremap = true, silent = true, desc = 'Toggle quickfix list' })
+vim.keymap.set('n', '<M-k>', ':cprev<CR>zz', { desc = 'Quickfixlist prev item' })
+vim.keymap.set('n', '<M-j>', ':cnext<CR>zz', { desc = 'Quickfixlist next item' })

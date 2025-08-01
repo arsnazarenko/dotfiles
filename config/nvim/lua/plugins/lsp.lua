@@ -111,9 +111,18 @@ for server, config in pairs(servers) do
 end
 
 -- Настройка диагностики
+local signs = {
+  [vim.diagnostic.severity.ERROR] = " ",
+  [vim.diagnostic.severity.WARN] = " ",
+  [vim.diagnostic.severity.HINT] = " ",
+  [vim.diagnostic.severity.INFO] = " "
+}
+
 vim.diagnostic.config({
   virtual_text = true,
-  signs = true,
+  signs = {
+      text = signs,
+  },
   underline = true,
   update_in_insert = true,
   severity_sort = false,
@@ -121,11 +130,4 @@ vim.diagnostic.config({
 
 -- enable inlay hist
 vim.lsp.inlay_hint.enable(true)
-
--- Значки для диагностики
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
 
