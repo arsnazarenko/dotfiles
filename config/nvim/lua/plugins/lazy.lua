@@ -17,7 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   {"nvim-treesitter/nvim-treesitter", branch = "master", lazy = false, build = ":TSUpdate"},
   {"nvim-telescope/telescope.nvim", tag = "0.1.8", dependencies = { "nvim-lua/plenary.nvim" }},
-  {"tpope/vim-sleuth"},
   {"lewis6991/gitsigns.nvim"},
   {"neovim/nvim-lspconfig"},
   {"hrsh7th/nvim-cmp"},

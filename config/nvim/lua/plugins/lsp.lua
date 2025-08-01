@@ -72,9 +72,7 @@ local servers = {
         cargo = {
           allFeatures = true,
         },
-        checkOnSave = {
-          command = 'clippy'
-        },
+        checkOnSave = true,
         inlayHints = {
             enable = true,
             typeHints = true,
@@ -125,7 +123,7 @@ vim.diagnostic.config({
 vim.lsp.inlay_hint.enable(true)
 
 -- Значки для диагностики
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
