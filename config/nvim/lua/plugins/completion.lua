@@ -15,23 +15,4 @@ cmp.setup {
         {name = 'nvim_lsp', keyword_length = 1},
         {name = 'buffer', keyword_length = 3 },
     },
-    -- window = {
-    --     completion = cmp.config.window.bordered(),
-    --     documentation = cmp.config.window.bordered(),
-    -- },
 }
-
--- vim.diagnostic.config({
---     virtual_text = true,
---     signs = true,
---     update_in_insert = true,
---     underline = true,
---     severity_sort = true,
---     float = {
---         focusable = false,
---         border = 'rounded',
---         source = 'always',
---         header = '',
---         prefix = '',
---     },
--- })
