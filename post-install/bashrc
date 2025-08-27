@@ -2,7 +2,7 @@ if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; th
     exec /home/arsnaz/startw
 fi
 
-. /usr/share/git-core/contrib/completion/git-prompt.sh
+source /usr/lib/git-core/git-sh-prompt
 if [[ ${EUID} == 0 ]] ; then
     PS1='\[\033[01;31m\]\u@\h\[\033[01;34m\]:\W\[\033[00m\]\$\[\033[01;35m\]$(__git_ps1 " (%s)")\[\033[00m\] '
 else
