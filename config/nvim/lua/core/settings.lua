@@ -11,6 +11,7 @@ vim.opt.number = true
 vim.opt.signcolumn = "yes"
 vim.opt.syntax = "on"
 vim.opt.wrap = true
+vim.opt.linebreak = true
 -- vim.opt.breakindent = true
 vim.opt.undofile = false
 vim.showcmd = true

@@ -1,6 +1,3 @@
-local lsp = require('lspconfig')
-local util = require('lspconfig/util')
-
 -- Общие настройки LSP
 local on_attach = function(client, bufnr)
   -- Включить поддержку format-on-save для соответствующих серверов
@@ -33,7 +30,7 @@ local servers = {
   gopls = {
     cmd = {'gopls'},
     filetypes = {'go', 'gomod', 'gowork', 'gotmpl'},
-    root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
+    root_markers = {'go.work', 'go.mod', '.git'},
     settings = {
       gopls = {
         init_options = {
@@ -63,7 +60,7 @@ local servers = {
   rust_analyzer = {
     cmd = {'rust-analyzer'},
     filetypes = {'rust'},
-    root_dir = util.root_pattern('Cargo.toml'),
+    root_markers = {'Cargo.toml'},
     settings = {
       ['rust-analyzer'] = {
         procMacro = {
@@ -90,16 +87,18 @@ local servers = {
 
   -- C/C++
   clangd = {
-    InlayHints = {
-      Designators = true,
-      Enabled = true,
-      ParameterNames = true,
-      DeducedTypes = true,
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+        "--suggest-missing-includes",
+        "--completion-style=detailed",
+        "--inlay-hints",
     },
-    cmd = { "clangd", "--background-index", "--clang-tidy", "--header-insertion=iwyu", "--inlay-hints" },
-    fallbackFlags = { "-std=c++20" },
     filetypes = {'c', 'cpp', 'objc', 'objcpp'},
-    root_dir = util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git'),
+    root_markers = {'compile_commands.json', 'compile_flags.txt', '.git'},
+    single_file_support = true,
   }
 }
 
@@ -107,9 +106,9 @@ local servers = {
 for server, config in pairs(servers) do
   config.on_attach = on_attach
   config.capabilities = require('cmp_nvim_lsp').default_capabilities()
-  lsp[server].setup(config)
+  vim.lsp.config(server, config)
+  vim.lsp.enable(server)
 end
-
 -- Настройка диагностики
 local signs = {
   [vim.diagnostic.severity.ERROR] = " ",

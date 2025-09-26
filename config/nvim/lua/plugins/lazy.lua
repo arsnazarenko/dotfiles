@@ -23,7 +23,9 @@ local plugins = {
   {"hrsh7th/cmp-nvim-lsp"},
   {"hrsh7th/cmp-path"},
   {"hrsh7th/cmp-buffer"},
-  {"ellisonleao/gruvbox.nvim", priority = 1000, config = true}
+  {'nvim-lualine/lualine.nvim'},
+  {"ellisonleao/gruvbox.nvim", priority = 1000, config = true},
+  {"navarasu/onedark.nvim", priority = 1000, config = true}
 }
 
 -- Setup lazy.nvim

@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
 
@@ -67,6 +67,6 @@ local function toggle_quickfix()
 end
 
 
-vim.keymap.set('n', '<M-q>', toggle_quickfix, { noremap = true, silent = true, desc = 'Toggle quickfix list' })
+vim.keymap.set('n', '<M-r>', toggle_quickfix, { noremap = true, silent = true, desc = 'Toggle quickfix list' })
 vim.keymap.set('n', '<M-k>', ':cprev<CR>zz', { desc = 'Quickfixlist prev item' })
 vim.keymap.set('n', '<M-j>', ':cnext<CR>zz', { desc = 'Quickfixlist next item' })
