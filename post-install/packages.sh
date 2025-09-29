@@ -3,14 +3,11 @@ sudo apt install sway firefox git --no-install-recommends
 
 # packages (names can be diff)
 
-sudo apt install sway git tmux pipewire pipewire-pulseaudio wireplumber pavucontrol xdg-desktop-portal xdg-desktop-portal-wlr waybar firefox alacritty chromium tmux git neovim ripgrep wl-clipboard thunar blueman swaylock swayidle  network-manager network-manager-openvpn network-manager-applet 
-
-sudo apt install pipewire pipewire-pulseaudio wireplumber pavucontrol xdg-desktop-portal xdg-desktop-portal-wlr waybar firefox alacritty chromium tmux git neovim ripgrep wl-clipboard thunar blueman swaylock swayidle network-manager-applet NetworkManager-openvpn NetworkManager vlc obs-studio vlc-plugin-gstreamer vlc-plugin-ffmpeg keepassxc rclone cups cups-pdf dbus-daemon google-noto-color-emoji-fonts cups cups-pdf gutenprint-cups system-config-printer grim slurp wlr-randr wl-mirror --no-install-recommends
+sudo apt install sway git tmux pipewire pipewire-pulseaudio wireplumber pavucontrol xdg-desktop-portal xdg-desktop-portal-wlr waybar firefox-esr alacritty chromium tmux git ripgrep wl-clipboard thunar blueman swaylock swayidle network-manager network-manager-openvpn network-manager-applet keepassxc rclone dbus-daemon fonts-noto-color-emoji-noto-color-emoji-fonts cups printer-driver-gutenprint system-config-printer grim slurp wlr-randr wl-mirror
 
 # services
-systemctl --user enable mpris-proxy
-systemctl --user enable pipewire pipewire-pulse
-systemctl enable cups
+systemctl --user enable --now wireplumber xdg-desktop-portal xdg-desktop-portal-wlr pipewire pipewire-pulse mpris-proxy
+systemctl enable cups 
 systemctl daemon-reload
 
 

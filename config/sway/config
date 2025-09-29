@@ -21,15 +21,16 @@ set $menu wmenu-run
 
 ### Output configuration
 output eDP-1 {
-    bg #000000 solid_color scale 1
+    bg ~/Pictures/space.jpg fill 
+    scale 1
 }
 
 output HDMI-A-1 {
-    bg #000000 solid_color
+    bg ~/Pictures/space.jpg fill 
 }
 
 output DP-1 {
-    bg #000000 solid_color
+    bg ~/Pictures/space.jpg fill 
     resolution 2560x1440@100.000Hz
 }
 ### Idle configuration
@@ -211,24 +212,6 @@ bindsym $mod+r mode "resize"
     bindsym Alt+Print exec grim /home/arsnaz/Pictures/Screenshots/ps_$(date +"%Y%m%d%H%M%S").png
 
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-# bar {
-#     position top
-# 
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-# 
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
-# }
-
 bar {
     swaybar_command waybar
     workspace_buttons yes
@@ -259,12 +242,14 @@ bindsym $mod+Escape mode "$mode_system"
 
 # Remove sharing firefox window
 for_window [title = "Firefox - Sharing Indicator"] kill
-for_window [title = "Firefox — Sharing Indicator"] kill
 
 # Autostart
+# exec --no-startup-id systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 exec --no-startup-id dbus-update-activation-environment --all
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id blueman-applet
+exec --no-startup-id gammastep
+exec --no-startup-id swaync
 
 # Prevent locking when something opened in fullscreen mode
 for_window [class=".*"] inhibit_idle fullscreen
