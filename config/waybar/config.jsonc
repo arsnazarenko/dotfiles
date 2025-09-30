@@ -4,7 +4,7 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 5, // Gaps between modules (4px)
+    "spacing": 0, // Gaps between modules (4px)
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
@@ -14,13 +14,12 @@
         "custom/notification",
     ],
     "modules-right": [
-        "idle_inhibitor",
         "sway/language",
         "network",
         "pulseaudio",
         "cpu",
-        "battery",
         "clock",
+        "battery",
         "tray"
     ],
     "keyboard-state": {
@@ -50,7 +49,7 @@
         }
     },
     "tray": {
-        "icon-size": 22,
+        "icon-size": 24,
         "spacing": 10
     },
     "clock": {
@@ -96,18 +95,10 @@
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": "  {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"

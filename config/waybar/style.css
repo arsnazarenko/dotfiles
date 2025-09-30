@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: monospace, FontAwesome;
+    font-family: FontAwesome, monospace;
     font-size: 20;
 }
 
@@ -178,15 +178,6 @@ label:focus {
     background-color: #eb4d4b;
 }
 
-#idle_inhibitor {
-    background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
 #mpd {
     background-color: #66cc99;
     color: #2a5c45;
@@ -257,9 +248,9 @@ label:focus {
     padding-left: 6px;
 }
 
-#mpd, #disk, #wireplumber, #custom-media, #mode, #idle_inhibitor, #scratchpad, #power-profiles-daemon, #language, #network, #pulseaudio, #memory, #temperature, #battery, #clock, #backlight, #cpu {
+#mpd, #disk, #wireplumber, #custom-media, #mode, #scratchpad, #power-profiles-daemon, #language, #network, #pulseaudio, #memory, #temperature, #battery, #clock, #backlight, #cpu {
     padding-right: 6px;
-    padding-left: 4px;
+    padding-left: 6px;
     background-color: inherit;
     color: #ffffff;
     border-right: 2px solid rgba(100, 114, 125, 0.5);
