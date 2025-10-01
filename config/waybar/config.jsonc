@@ -119,8 +119,7 @@
         "return-type": "json",
         "exec-if": "which swaync-client",
         "exec": "swaync-client -swb",
-        "on-click": "swaync-client -d -sw",
-        "on-click-right": "swaync-client -t -sw",
+        "on-click": "swaync-client --toggle-dnd",
         "escape": true
     }
 }
