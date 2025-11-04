@@ -20,21 +20,17 @@ set $term alacritty
 set $menu wmenu-run
 
 ### Output configuration
-output eDP-1 {
-    bg ~/Pictures/space.jpg fill 
-    scale 1
-}
-
-output HDMI-A-1 {
-    bg ~/Pictures/space.jpg fill 
+output * {
+    bg #000000 solid_color
 }
 
 output DP-1 {
-    bg ~/Pictures/space.jpg fill 
+    scale 1
+    bg #000000 solid_color
     resolution 2560x1440@100.000Hz
 }
 
-set $locker swaylock -f -i ~/Pictures/space.jpg
+set $locker swaylock-blur --blur-sigma 40 -- -f
 ### Idle configuration
 exec swayidle -w \
           timeout 300 '$locker' \

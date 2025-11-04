@@ -33,9 +33,7 @@ local servers = {
     root_markers = {'go.work', 'go.mod', '.git'},
     settings = {
       gopls = {
-        init_options = {
-            usePlaceholders = true,
-        },
+        usePlaceholders = true,
         experimentalPostfixCompletions = true,
         completeUnimported = true,
         analyses = {
