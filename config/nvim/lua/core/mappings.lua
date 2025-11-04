@@ -38,6 +38,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  desc = 'Run LSP formatting on file save',
+  group = vim.api.nvim_create_augroup("lsp", { clear = true }),
+  callback = function(args)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = args.buf,
+      callback = function()
+        vim.lsp.buf.format {async = false, id = args.data.client_id }
+      end,
+    })
+  end
+})
+
 arrow_disabled = function () print("Arrows disabled!") end
 
 -- Disable arrows in all modes
