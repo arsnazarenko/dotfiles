@@ -86,12 +86,12 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "format-wifi": "{ipaddr}/{cidr}",
+        "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr}",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected",
-        "format": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
