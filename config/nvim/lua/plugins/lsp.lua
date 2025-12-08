@@ -97,6 +97,17 @@ local servers = {
     filetypes = {'c', 'cpp', 'objc', 'objcpp'},
     root_markers = {'compile_commands.json', 'compile_flags.txt', '.git'},
     single_file_support = true,
+  },
+
+  jdtls = {
+    cmd = {"jdtls"},
+    root_markers = {'gradlew', '.git', 'mvnw'},
+    settings = {
+        java = {}
+    },
+    init_options = {
+        bundles = {}
+    },
   }
 }
 
