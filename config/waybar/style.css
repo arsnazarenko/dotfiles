@@ -112,6 +112,7 @@ window#waybar {
 /* CPU, Memory, Temp */
 #cpu,
 #memory,
+#clock,
 #temperature {
     color: #aaaaaa; /* Чуть темнее основного текста для второстепенной инфы */
 }
@@ -122,12 +123,6 @@ window#waybar {
 /* Клавиатура (Language) */
 #keyboard-state {
     color: #dcdcdc;
-}
-
-/* Часы */
-#clock {
-    color: #ffffff;
-    font-weight: bold;
 }
 
 /* Анимация мигания для критического состояния */

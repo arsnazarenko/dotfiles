@@ -13,7 +13,7 @@
         "custom/media"
     ],
     "modules-center": [
-        "sway/clock"
+        "clock"
     ],
     "modules-right": [
         "sway/language",
@@ -23,7 +23,6 @@
         "memory",
         "temperature",
         "battery",
-        "battery#bat2",
         "tray"
     ],
     // Modules configuration
@@ -95,7 +94,8 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%d.%m.%Y %R}",
+        "format-alt": "{:%A, %B %d, %Y}"
     },
     "cpu": {
         "format": "{usage}% ",
