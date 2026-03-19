@@ -67,6 +67,10 @@ local servers = {
         cargo = {
           allFeatures = true,
         },
+        check = {
+            command = 'clippy',
+            extra_args = {"--all-targets", "-Dwarnings"},
+        },
         checkOnSave = true,
         inlayHints = {
             enable = true,
