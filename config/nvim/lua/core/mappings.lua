@@ -17,6 +17,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- No search visualisation on Esc
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>tr', ':Translate ru<CR>')
 
 -- copy to out buffer
 vim.keymap.set('n', '<leader>y', "\"+y")
