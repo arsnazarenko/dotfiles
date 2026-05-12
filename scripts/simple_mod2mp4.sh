@@ -6,7 +6,7 @@ function convert_mod_to_mp4 {
     echo "Input file: $input"
     echo "Output file: $output"
 
-    ffmpeg -i "$input" -c:v libx264 -preset veryslow -crf 17 -vf "yadif=0:-1:0,minterpolate=fps=50:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1" -pix_fmt yuv420p -c:a aac -b:a 384k -movflags +faststart "$output"
+    ffmpeg -i "$input" -c:v libx264 -preset veryslow -crf 17 -vf "yadif=0:-1:0,minterpolate=fps=50:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1" -pix_fmt yuv420p -c:a aac -b:a 384k -movflags +faststart ${FFMPEG_ARGS} "$output"
 }
 
 if [ ! $# -eq 3 ]
