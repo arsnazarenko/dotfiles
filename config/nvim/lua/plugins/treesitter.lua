@@ -1,8 +1,9 @@
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter").setup({
       ensure_installed = {
           "c",
           "rust",
           "go",
+          "python",
           "lua",
           "markdown",
           "markdown_inline",

@@ -1,12 +1,11 @@
--- Core settings
-require("core/settings")
-require("core/mappings")
+require('config')
+require('keymaps')
+require('plugins')
+require('plugins/lsp')
+require('plugins/completion')
+require('plugins/gitsigns')
+require('plugins/translate')
+require('plugins/treesitter')
+require('plugins/colorscheme')
+require('plugins/minipick')
 
--- Plugins
-require("plugins/lazy")
-require("plugins/lsp")
-require("plugins/completion")
-require("plugins/telescope")
-require("plugins/colorscheme")
-require("plugins/lualine")
-require("plugins/gitsigns")

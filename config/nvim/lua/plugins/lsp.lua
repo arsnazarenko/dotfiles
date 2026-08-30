@@ -103,31 +103,90 @@ local servers = {
     single_file_support = true,
   },
 
+  ty = {
+      cmd = { "ty", "server" },
+      filetypes = { "python" },
+      root_markers = { "ty.toml", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
+      single_file_support = true,
+  },
   jdtls = {
-    cmd = {"jdtls"},
-    root_markers = {'gradlew', '.git', 'mvnw'},
-    settings = {
-        java = {}
-    },
-    init_options = {
-        bundles = {}
-    },
+      cmd = {"jdtls"},
+      root_markers = {'gradlew', '.git', 'mvnw'},
+      settings = {
+          java = {
+              configuration = {
+                  updateBuildConfiguration = "interactive",
+              },
+              runtimes = {
+                  {
+                      name = "JavaSE-25",
+                      path = "/usr/lib/jvm/java-25-openjdk/",
+                      default = true,
+                  },
+              },
+              gradle = {
+                  enabled = true,
+                  wrapper = {
+                      enabled = true
+                  }
+              },
+              maven = {
+                  downloadSources = true,
+              },
+              implementationsCodeLens = {
+                  enabled = true,
+              },
+              referencesCodeLens = {
+                  enabled = true,
+              },
+              references = {
+                  includeDecompiledSources = true,
+              },
+              format = {
+                  enabled = true,
+              },
+          },
+          signatureHelp = { enabled = true },
+          extendedClientCapabilities = extendedClientCapabilities,
+          sources = {
+              organizeImports = {
+                  starThreshold = 9999,
+                  staticStarThreshold = 9999,
+              },
+          },
+      },
+      init_options = {
+          bundles = {}
+      },
   }
 }
+
+
+local capabilities = {
+  textDocument = {
+    foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    }
+  }
+}
+
+capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+
 
 -- Установка и настройка серверов
 for server, config in pairs(servers) do
   config.on_attach = on_attach
-  config.capabilities = require('cmp_nvim_lsp').default_capabilities()
+  config.capabilities = capabilities
   vim.lsp.config(server, config)
   vim.lsp.enable(server)
 end
 -- Настройка диагностики
 local signs = {
-  [vim.diagnostic.severity.ERROR] = " ",
-  [vim.diagnostic.severity.WARN] = " ",
-  [vim.diagnostic.severity.HINT] = " ",
-  [vim.diagnostic.severity.INFO] = " "
+    [vim.diagnostic.severity.WARN] = "W",
+    [vim.diagnostic.severity.ERROR] = "E",
+    [vim.diagnostic.severity.HINT] = "H",
+    [vim.diagnostic.severity.INFO] = "I"
 }
 
 vim.diagnostic.config({
@@ -140,6 +199,6 @@ vim.diagnostic.config({
   severity_sort = false,
 })
 
--- enable inlay hist
+-- enable inlay hints
 vim.lsp.inlay_hint.enable(true)
 

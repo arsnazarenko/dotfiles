@@ -63,8 +63,6 @@ vim.keymap.set({'n', 'i', 'v'}, '<right>', arrow_disabled)
 -- Markown viewer in Firefox
 vim.api.nvim_create_user_command("Markdown", "!firefox %:p &", {})
 
-
-
 local function toggle_quickfix()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local buf = vim.api.nvim_win_get_buf(win)
@@ -73,7 +71,7 @@ local function toggle_quickfix()
       return
     end
   end
-  
+--
   if #vim.fn.getqflist() > 0 then
     vim.cmd("copen")
   else
@@ -85,3 +83,4 @@ end
 vim.keymap.set('n', '<M-r>', toggle_quickfix, { noremap = true, silent = true, desc = 'Toggle quickfix list' })
 vim.keymap.set('n', '<M-k>', ':cprev<CR>zz', { desc = 'Quickfixlist prev item' })
 vim.keymap.set('n', '<M-j>', ':cnext<CR>zz', { desc = 'Quickfixlist next item' })
+

@@ -1,5 +1,4 @@
--- Common
-vim.cmd("filetype plugin on")
+vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
 vim.opt.backup = false
 vim.opt.compatible = false
 vim.opt.cursorline = true
@@ -12,7 +11,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.syntax = "on"
 vim.opt.wrap = true
 vim.opt.linebreak = true
--- vim.opt.breakindent = true
+vim.opt.breakindent = true
 vim.opt.undofile = false
 vim.showcmd = true
 vim.showmode = true
@@ -21,7 +20,9 @@ vim.opt.sidescrolloff = 8
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = false
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = "80"
+-- vim.opt.winborder = "rounded" -- Use rounded borders for windows
+vim.opt.numberwidth = 2 -- Width of the line number column
 
 -- Idents
 vim.opt.expandtab = true
@@ -37,12 +38,14 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.showmatch = true
-vim.opt.completeopt= { "menu", "menuone", "noselect" }
 
 -- Netrw config
 vim.g.netrw_altv = 1
 vim.g.netrw_banner = 0
 -- vim.g.netrw_liststyle = 3
 
--- Colors 
+-- Colors
 vim.opt.termguicolors = true
+
+-- New neovim UI
+-- require('vim._core.ui2').enable()
