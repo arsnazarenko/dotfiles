@@ -8,5 +8,6 @@ vim.pack.add({
     'https://github.com/navarasu/onedark.nvim',
     'https://github.com/ellisonleao/gruvbox.nvim',
     'https://github.com/mfussenegger/nvim-jdtls',
-    'https://github.com/echasnovski/mini.nvim'
+    'https://github.com/nvim-mini/mini.pick',
+    'https://github.com/nvim-mini/mini.extra',
 })
