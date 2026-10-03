@@ -1,0 +1,23 @@
+# Global settings
+font=JetBrainsMono Nerd Font 11
+background-color=#222222dd
+# background-color=#282a36
+# text-color=#f8f8f2
+width=350
+# height=300
+# margin=10
+# padding=15
+# border-color=#bd93f9
+border-size=1
+border-radius=3
+max-visible=5
+default-timeout=5500
+
+# Mouse bindings
+on-button-left=invoke-default-action
+on-button-right=dismiss
+
+# Urgent notifications style
+[urgency=high]
+border-color=#ff5555
+default-timeout=6000

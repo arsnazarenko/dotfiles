@@ -5,8 +5,8 @@
     border: none;
     border-radius: 0;
     /* Используем моноширинный шрифт для стиля i3status */
-    font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
-    font-size: 12px;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 15px;
     /* Минимальная высота, чтобы не пустить лишнее пространство */
     min-height: 0;
     margin: 0;
